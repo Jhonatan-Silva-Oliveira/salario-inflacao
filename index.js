@@ -3,7 +3,7 @@ import ReadLine from "readline-sync";
 
 //adicionando tabelas utilizadas 
 //contendo dados dos salários mínimos e da inflação entre 2010 e 2020
-const salarioMinimo = [
+const dadosSalario = [
   {salario: 510, ano: 2010},
   {salario: 545, ano: 2011},
   {salario: 622, ano: 2012},
@@ -17,8 +17,8 @@ const salarioMinimo = [
   {salario: 1045, ano: 2020},
 ]
 
-//inflacao (%)
-const inflacaoIPCA = [
+//inflação (%)
+const dadosInflacao = [
   {inflacao: 5.91, ano: 2010},
   {inflacao: 6.50, ano: 2011},
   {inflacao: 5.84, ano: 2012},
@@ -39,20 +39,36 @@ console.log("1 - Listar os salários mínimo de 2010 à 2020\n");
 console.log("2 - Listar o índice IPCA de 2010 à 2020\n");
 console.log("3 - Comparando entre o percentual de aumento salarial e o IPCA\n\n")
 
-let opcao = ReadLine.question("Digite o numero da sua escolha: ")
+//coletando opção escolhida
+let opcao = Number(ReadLine.question("Digite o numero da sua escolha: "))
 
+//iniciando verificação e direcionando para resultado
 switch (opcao) {
   
+  //resultado caso opcao 1
   case 1: 
-    console.log("opcao 1")
+    console.log("\nResultado de salários mínimos de 2010 a 2020\n")
+    for (let salarioMinimo of dadosSalario) {
+      console.log("Ano: ".padEnd(30, '.') + salarioMinimo.ano)
+      console.log("Salario mínimo: ".padEnd(30,'.') + "R$ " + salarioMinimo.salario + ",00\n")
+    }
   break;
+  
+  //resultado caso opcao 2
   case 2: 
+    console.log("\nResultado do índice IPCA de 2010 a 2020\n")
+    for (let inflacaoIPCA of dadosInflacao) {
+      console.log("Ano: ".padEnd(30, '.') + inflacaoIPCA.ano)
+      console.log("Inflação IPCA: ".padEnd(30,'.') + inflacaoIPCA.inflacao + "%\n")
+    }
   
   break;
   
+  //resultado caso opcao 3
   case 3: 
   
   break;
   
+  //resultado caso opcao invalido
   default:
 }
